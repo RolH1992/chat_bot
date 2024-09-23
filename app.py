@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, jsonify
+import nltk
+nltk.data.path.append('/opt/render/project/src/nltk_data')  # Add this line
 from utils import predict_class, get_response  # Importing from utils.py
 
 app = Flask(__name__, template_folder='templates')
@@ -9,7 +11,8 @@ def index():
 
 @app.route('/handle_message', methods=['POST'])
 def handle_message():
-    message = request.json.get('message')
+    data = request.get_json()
+    message = data.get('message')
     if message:
         # Get the predicted intent(s) from the model
         intents = predict_class(message)
@@ -22,4 +25,4 @@ def handle_message():
     return jsonify({'error': 'No message provided'}), 400
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)  # Bind to 0.0.0.0 for Render
+    app.run(debug=True)
