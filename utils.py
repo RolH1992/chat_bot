@@ -37,6 +37,10 @@ def bag_of_words(sentence):
 def predict_class(sentence):
     classes = pickle.load(open('model/classes.pkl', 'rb'))
     model = load_model('model/chatbot_model.keras')
+    
+    # Print the model summary to verify if it's loaded correctly
+    print(model.summary())  # This will show if the model structure is intact
+
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
     ERROR_THRESHOLD = 0.25

@@ -53,9 +53,13 @@ for doc in documents:
     output_row[classes.index(doc[1])] = 1
     training.append([bag, output_row])
 
+# Shuffle the training data
 random.shuffle(training)
-training = np.array(training)
 
+# Convert the training list to a numpy array
+training = np.array(training, dtype=object)
+
+# Split the training data into input (train_x) and output (train_y)
 train_x = list(training[:, 0])
 train_y = list(training[:, 1])
 
