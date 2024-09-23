@@ -8,6 +8,9 @@ from tensorflow.keras.models import load_model
 import numpy as np
 from flask import Flask, render_template, request, jsonify
 
+# Ensure nltk resources are downloaded
+nltk.download('punkt')
+
 # Initialize the Flask app
 app = Flask(__name__, template_folder='templates')
 
