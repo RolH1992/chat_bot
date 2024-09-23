@@ -1,6 +1,5 @@
-Flask==2.2.0
+Flask==2.3.3
 nltk==3.6.5
 tensorflow==2.14.0
 numpy<2
 gunicorn
-Werkzeug>=2.2.0
