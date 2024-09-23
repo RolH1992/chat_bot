@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: chat_bot
-    env: python
-    plan: free  
-    buildCommand: |
-      pip install -r requirements.txt
-      python -m nltk.downloader wordnet
-    startCommand: python app.py
