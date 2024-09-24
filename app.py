@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, jsonify
+import os
 import nltk
+
 nltk.data.path.append('/opt/render/project/src/nltk_data')
 from utils import predict_class, get_response
 
@@ -23,4 +25,5 @@ def handle_message():
     return jsonify({'error': 'No message provided'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=False, host="0.0.0.0", port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host="0.0.0.0", port=port)
